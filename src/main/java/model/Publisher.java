@@ -15,12 +15,13 @@ public class Publisher {
     private String name;
     @ManyToMany
     @JoinTable(
-            name = "author_publisher",
+            name = "publisher_book",
             joinColumns = @JoinColumn(name = "publisher_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")
+            inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private Set<Book> books = new HashSet<>();
-
+    @ManyToMany(mappedBy = "publishers")
+private Set<Author> authors = new HashSet<>();
     public Publisher() {
     }
 
